@@ -5,7 +5,7 @@ from app.models import Task
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('task_number', 'font_name', 'started', 'finished', 'submeted', )
+    list_display = ('task_number', 'font_name', 'started', 'finished', 'submeted', 'start_date', 'end_date', )
     list_display_links = ('task_number', 'font_name', )
     list_editable = ('started', 'finished', 'submeted', )
     list_filter = ('task_number', 'font_name', 'started', 'finished', 'submeted', )

@@ -17,10 +17,11 @@ class Task(models.Model):
     started = models.BooleanField('Iniciada', default=False)
     finished = models.BooleanField('Finalizada', default=False)
     submeted = models.BooleanField('Submetido', default=False)
+    end_date = models.DateField('Data final', null=True)
 
     @property
-    def end_date(self):
-        if self.finished == True:
+    def calc_date(self):
+        if self.finished:
             self.end_date = date.today()
 
     def __str__(self):
