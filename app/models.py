@@ -17,12 +17,12 @@ class Task(models.Model):
     started = models.BooleanField('Iniciada', default=False)
     finished = models.BooleanField('Finalizada', default=False)
     submeted = models.BooleanField('Submetido', default=False)
-    end_date = models.DateField('Data final', null=True)
+    end_date = models.DateField('Data final', blank=True, null=True)
 
-    @property
-    def calc_date(self):
+    def save(self, *args, **kwargs):
         if self.finished:
             self.end_date = date.today()
+        super(Task, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.font_name
